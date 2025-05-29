@@ -2,17 +2,6 @@ import { motion } from "motion/react"
 import { useEffect, useState } from "react"
 import bg from "../assets/bg.jpg"
 
-const image: React.CSSProperties = {
-  // maxWidth: "80vw",
-  // background: "red"
-}
-
-const shape: React.CSSProperties = {
-  strokeWidth: 10,
-  // strokeLinecap: "round",
-  fill: "transparent",
-}
-
 const draw = {
   hidden: { pathLength: 0, opacity: 0 },
   visible: (delay: number) => {
@@ -38,8 +27,8 @@ export default function Animation() {
     <div
       style={{
         position: "relative",
-        width: WIDTH,
-        height: HEIGHT
+        width: "100vw",
+        aspectRatio: 1440 / 1024
       }}
     >
       <img
@@ -57,7 +46,7 @@ export default function Animation() {
         animate="visible"
         style={{
           position: "absolute",
-          top: "14.5%",
+          top: "14.15%",
           left: 0,
         }}
       >
@@ -69,7 +58,7 @@ export default function Animation() {
           strokeLinecap="square"
           variants={draw}
           fill="transparent"
-          
+          custom={1}
         />
         <motion.path
           d="M966.184 398.428C981 367.5 978.071 337.673 966.184 321.508C939.367 285.036 895.666 261.839 864.902 229.891C845.827 210.082 830.878 190.029 819.623 165.019C808.953 141.308 808.557 88.6251 824.389 67.3121C851.479 30.846 895.838 25.5 936.5 25.5C966.23 25.5 999 45.5 1016.89 62.546C1030.2 75.2272 1041.92 90.9491 1052.11 105.441C1060.39 117.236 1064.88 131.665 1072.23 144.1C1084.32 164.565 1094.43 186.642 1105.06 207.914C1124.67 247.124 1135.01 290.235 1156.04 329.054C1173.01 360.387 1194.1 385.005 1227.66 398.428C1255.03 409.377 1298.13 412.822 1320.73 390.22C1342.24 368.714 1350.52 345.879 1350.52 316.344C1350.52 300.512 1348.78 290.213 1342.18 275.7C1337.12 264.561 1330.72 251.858 1327.88 239.953C1321.84 214.593 1317.5 189.5 1324.31 161.576C1327.32 149.207 1337.38 131.929 1345.5 123C1355.5 112 1368.75 103.043 1384.5 97.5C1411.5 88 1438.3 100.675 1464.91 100.675"
@@ -78,7 +67,7 @@ export default function Animation() {
           strokeLinecap="square"
           variants={draw}
           fill="transparent"
-          custom={2.3}
+          custom={3.3}
         />
 
 
