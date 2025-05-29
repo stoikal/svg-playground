@@ -13,7 +13,7 @@ export default function Animation() {
   const progress1 = useSpring(s1, { bounce: 0 })
 
   const { scrollYProgress: s2 } = useScroll({
-    offset: [0.5, 1]
+    offset: [0.5, 1],
   })
 
   const progress2 = useSpring(s2, { bounce: 0 })
