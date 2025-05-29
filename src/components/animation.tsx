@@ -4,7 +4,7 @@ import bg from "../assets/bg.jpg";
 export default function Animation() {
 
   const WIDTH = 1440;
-  const HEIGHT = 1024; 
+  const HEIGHT = 1024;
 
   const { scrollYProgress: s1 } = useScroll({
     offset: [0, 0.4]
@@ -15,10 +15,14 @@ export default function Animation() {
     offset: [0.5, 1]
   })
 
-    const progress2 = useSpring(s2, { bounce: 0 })
+  const progress2 = useSpring(s2, { bounce: 0 })
+
+  const { scrollYProgress: s3 } = useScroll()
+
+  const progress3 = useSpring(s3, { bounce: 0 })
 
   return (
-    <div style={{ height: "250vh"}}>
+    <div style={{ height: "250vh" }}>
       <div
         style={{
           position: "fixed",
@@ -33,7 +37,7 @@ export default function Animation() {
             height: "100%",
           }}
         />
-        
+
         <motion.svg
           width="100%"
           // height={802}
@@ -51,12 +55,7 @@ export default function Animation() {
             stroke="#009494"
             strokeWidth="50"
             strokeLinecap="square"
-            // variants={draw}
             fill="transparent"
-            // initial={{ pathLength: .5 }}
-            // animate={{ pathLength: scrollYProgress }}
-            // custom={1}
-            // pathLength={20}
             style={{
               pathLength: progress1,
             }}
@@ -66,16 +65,42 @@ export default function Animation() {
             stroke="#009494"
             strokeWidth="50"
             // strokeLinecap="square"
-            // variants={draw}
             fill="transparent"
             custom={3.3}
             style={{
-              // opacity: scrollYProgress,
               pathLength: progress2
             }}
           />
 
 
+
+
+        </motion.svg>
+
+        <motion.svg
+          width="100%"
+          // height={802}
+          viewBox="0 0 1440 849"
+          initial="hidden"
+          animate="visible"
+          style={{
+            position: "absolute",
+            top: "14.15%",
+            left: 0,
+          }}
+        >
+          <motion.path
+            id="river"
+            d="M-40 315.393C23 273.393 102.838 223.031 166.5 282.893C200 314.393 229.5 365.892 150.5 591.392C71.5 816.892 304 872.392 392.5 783.392C435.836 739.812 461.5 598.392 566.5 591.392C616.888 588.033 645.5 608.892 736 680.392C846.173 767.435 961 688.5 954 577.392C951.222 533.298 922.5 508 973 406.893C1003.31 346.202 956.5 301.392 914 266.392C871.5 231.392 802.5 149.893 832.5 80.8926C862.5 11.8926 956.772 18.2678 998 39.3925C1058.5 70.3921 1112 177.392 1136 266.392C1160 355.393 1240 443.393 1316.5 406.893C1393 370.393 1334 266.392 1334 201.393C1334 152.556 1358 106.893 1449.5 105.893"
+            stroke="#dd4400"
+            strokeWidth="50"
+            strokeLinecap="square"
+            fill="transparent"
+            style={{
+              pathLength: progress3,
+            }}
+          />
+          <use href="river" clip-path="url(#cut-in-half)" stroke="purple" />
         </motion.svg>
       </div>
     </div>
