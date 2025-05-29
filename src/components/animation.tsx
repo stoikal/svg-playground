@@ -5,6 +5,7 @@ export default function Animation() {
 
   const WIDTH = 1440;
   const HEIGHT = 1024;
+  const SCROLL_COEFFICIENT = 2.5;
 
   const { scrollYProgress: s1 } = useScroll({
     offset: [0, 0.4]
@@ -22,7 +23,7 @@ export default function Animation() {
   const progress3 = useSpring(s3, { bounce: 0 })
 
   return (
-    <div style={{ height: "250vh" }}>
+    <div style={{ height: `${SCROLL_COEFFICIENT * 100}vh` }}>
       <div
         style={{
           position: "fixed",
@@ -64,22 +65,16 @@ export default function Animation() {
             d="M966.184 398.428C981 367.5 978.071 337.673 966.184 321.508C939.367 285.036 895.666 261.839 864.902 229.891C845.827 210.082 830.878 190.029 819.623 165.019C808.953 141.308 808.557 88.6251 824.389 67.3121C851.479 30.846 895.838 25.5 936.5 25.5C966.23 25.5 999 45.5 1016.89 62.546C1030.2 75.2272 1041.92 90.9491 1052.11 105.441C1060.39 117.236 1064.88 131.665 1072.23 144.1C1084.32 164.565 1094.43 186.642 1105.06 207.914C1124.67 247.124 1135.01 290.235 1156.04 329.054C1173.01 360.387 1194.1 385.005 1227.66 398.428C1255.03 409.377 1298.13 412.822 1320.73 390.22C1342.24 368.714 1350.52 345.879 1350.52 316.344C1350.52 300.512 1348.78 290.213 1342.18 275.7C1337.12 264.561 1330.72 251.858 1327.88 239.953C1321.84 214.593 1317.5 189.5 1324.31 161.576C1327.32 149.207 1337.38 131.929 1345.5 123C1355.5 112 1368.75 103.043 1384.5 97.5C1411.5 88 1438.3 100.675 1464.91 100.675"
             stroke="#009494"
             strokeWidth="50"
-            // strokeLinecap="square"
             fill="transparent"
             custom={3.3}
             style={{
               pathLength: progress2
             }}
           />
-
-
-
-
         </motion.svg>
 
         <motion.svg
           width="100%"
-          // height={802}
           viewBox="0 0 1440 849"
           initial="hidden"
           animate="visible"
@@ -89,18 +84,45 @@ export default function Animation() {
             left: 0,
           }}
         >
+          <mask id="mask-rectangle">
+            <path
+              fill="white"
+              fillRule="evenodd"
+              d={`
+                M0 0
+                L1440 0
+                L1440 849
+                L0 849
+                L0 0 z
+              `}
+            />
+          </mask>
+          <mask id="mask-inner">
+            <path
+              fill="white"
+              d={`
+                M900 400
+                L1020 440
+                L1020 600
+                L880 580
+                L900 400
+              `}
+            />
+          </mask>
+
           <motion.path
             id="river"
             d="M-40 315.393C23 273.393 102.838 223.031 166.5 282.893C200 314.393 229.5 365.892 150.5 591.392C71.5 816.892 304 872.392 392.5 783.392C435.836 739.812 461.5 598.392 566.5 591.392C616.888 588.033 645.5 608.892 736 680.392C846.173 767.435 961 688.5 954 577.392C951.222 533.298 922.5 508 973 406.893C1003.31 346.202 956.5 301.392 914 266.392C871.5 231.392 802.5 149.893 832.5 80.8926C862.5 11.8926 956.772 18.2678 998 39.3925C1058.5 70.3921 1112 177.392 1136 266.392C1160 355.393 1240 443.393 1316.5 406.893C1393 370.393 1334 266.392 1334 201.393C1334 152.556 1358 106.893 1449.5 105.893"
-            stroke="#dd4400"
+            stroke="#ee5500"
             strokeWidth="50"
             strokeLinecap="square"
             fill="transparent"
             style={{
+              maskComposite: "subtract",
+              maskImage: "url(#mask-rectangle), url(#mask-inner)",
               pathLength: progress3,
             }}
           />
-          <use href="river" clip-path="url(#cut-in-half)" stroke="purple" />
         </motion.svg>
       </div>
     </div>
