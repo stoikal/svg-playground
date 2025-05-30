@@ -7,18 +7,9 @@ export default function Animation() {
   const HEIGHT = 1024;
   const SCROLL_COEFFICIENT = 2.5;
 
-  const { scrollYProgress: s1 } = useScroll({
-    offset: [0, 0.4]
+  const { scrollYProgress: s3 } = useScroll({
+    offset: [0, .8]
   })
-  const progress1 = useSpring(s1, { bounce: 0 })
-
-  const { scrollYProgress: s2 } = useScroll({
-    offset: [0.5, 1],
-  })
-
-  const progress2 = useSpring(s2, { bounce: 0 })
-
-  const { scrollYProgress: s3 } = useScroll()
 
   const progress3 = useSpring(s3, { bounce: 0 })
 
@@ -85,8 +76,6 @@ export default function Animation() {
           />
         </motion.svg>
       </div>
-
-      <div style={{ height: 100 }}></div>
     </div>
   )
 }

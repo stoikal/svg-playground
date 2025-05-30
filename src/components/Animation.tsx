@@ -81,8 +81,6 @@ export default function Animation() {
           />
         </motion.svg>
       </div>
-
-      <div style={{ height: 100 }}></div>
     </div>
   )
 }
