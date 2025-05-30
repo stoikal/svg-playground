@@ -19,6 +19,7 @@ export default function Animation() {
         style={{
           position: "fixed",
           width: WIDTH / 2,
+          maxWidth: "100vw",
           maxHeight: "100vh",
           aspectRatio: WIDTH / HEIGHT
         }}
